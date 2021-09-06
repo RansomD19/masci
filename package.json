@@ -1,0 +1,27 @@
+{
+  "name": "masci",
+  "version": "1.0.0",
+  "description": "A math and science bot",
+  "main": "binary.js",
+  "scripts": {
+    "test": "help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RansomD19/masci.git"
+  },
+  "keywords": [
+    "masci"
+  ],
+  "author": "R&D",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RansomD19/masci/issues"
+  },
+  "homepage": "https://github.com/RansomD19/masci#readme",
+  "dependencies": {
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.2"
+  }
+}
