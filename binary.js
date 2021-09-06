@@ -1,4 +1,4 @@
-binaryText("Hello hmm");
+binaryText("Hello sus");
 
 function binaryText(text) {
   let binary = " ";
