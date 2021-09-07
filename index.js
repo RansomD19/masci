@@ -2,6 +2,11 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
+//defining for slash commands
+const{SlashCommandBuilder} = require("@discordjs/builders");
+const{REST} = require("@discordjs/rest");
+const{Routes} = require("discord-api-types/v9");
+
 
 const prefix = "m!";
 
