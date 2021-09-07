@@ -148,6 +148,33 @@ client.on("messageCreate", (msg) => {
 
     msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
   }
+
+  if (cmd === "zodiac") {
+    if (args.length === 2) {
+    } else
+      return msg.reply(
+        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
+      );
+
+    if (isNaN(args[0]) || isNaN(args[1])) {
+      return msg.reply(
+        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
+      );
+    }
+
+    if (args[0] < 0 || args[0] > 12) {
+      return msg.reply(
+        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
+      );
+    }
+
+    if (args[1] < 1 || args[1] > 31) {
+      return msg.reply(
+        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
+      );
+    }
+    if (args[0]) msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));
+  }
 });
 
 client.login(process.env.TOKEN);
@@ -205,4 +232,26 @@ AVERAGE SPEED
 function aspeed(dist, time) {
   let res = dist / time;
   return res.toString();
+}
+
+// ZODIAC
+function zodiac(day, month) {
+  var zodiac = [
+    "",
+    "Capricorn",
+    "Aquarius",
+    "Pisces",
+    "Aries",
+    "Taurus",
+    "Gemini",
+    "Cancer",
+    "Leo",
+    "Virgo",
+    "Libra",
+    "Scorpio",
+    "Sagittarius",
+    "Capricorn",
+  ];
+  var last_day = ["", 19, 18, 20, 20, 21, 21, 22, 22, 21, 22, 21, 20, 19];
+  return day > last_day[month] ? zodiac[month * 1 + 1] : zodiac[month];
 }
