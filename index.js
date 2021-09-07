@@ -30,7 +30,7 @@ client.once("ready", () => {
   });
 });
 
-client.on("message", (msg) => {
+client.on("messageCreate", (msg) => {
   if (
     !msg.content.toLowerCase().startsWith(prefix.toLowerCase()) ||
     msg.author.bot
@@ -85,7 +85,7 @@ client.on("message", (msg) => {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN2);
 
 /*
 hello there 
