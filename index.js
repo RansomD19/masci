@@ -42,7 +42,22 @@ client.on("messageCreate", (msg) => {
   console.log(cmd, args);
 
   if (cmd === "binary") {
-    msg.reply(toBinary(args[0]));
+    let sentence = args.slice(0).join(' ');
+    console.log(sentence)
+
+    binary.value = '';
+    for(i=0; i < sentence.length; i++){
+        var e=sentence[i].charCodeAt(0);var s = "";
+        do{
+            var a = e%2;
+            e=(e-a)/2;
+            s=a+s;
+        }while(e!=0);
+        while(s.length<8){s="0"+s;}
+        binary.value+=s + " ";
+        msg.reply(binary.value);
+        }
+    
   }
 
   if (cmd === "pythogras") {
@@ -59,7 +74,7 @@ client.on("messageCreate", (msg) => {
   if (cmd === "herons") {
     if (args.length === 3) {
     } else return msg.reply("Please provide 3 numbers");
-
+ 
     if (isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2])) {
       msg.channel.send("Pls provide 3 numbers");
     }
@@ -126,7 +141,7 @@ client.on("messageCreate", (msg) => {
   }
 });
 
-client.login(process.env.TOKEN2);
+client.login(process.env.TOKEN);
 
 /*
 hello there 
@@ -160,23 +175,6 @@ function pythogras(a, b) {
   }
 }
 
-/*
-BINARY*/
-
-function toBinary(text){
-  binary.value = '';
-  for(i=0; i < text.length; i++){
-      var e=text[i].charCodeAt(0);var s = "";
-      do{
-          var a = e%2;
-          e=(e-a)/2;
-          s=a+s;
-      }while(e!=0);
-      while(s.length<8){s="0"+s;}
-      binary.value+=s;
-      return binary
-      }
-  }
 
 /*
 AVERAGE SPEED
