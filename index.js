@@ -45,6 +45,17 @@ client.on("message", (msg) => {
     msg.channel.send("Sap's Part");
   }
 
+  if (cmd === "pythogras") {
+    if (args.length === 2) {
+    } else return msg.reply("Please provide 2 numbers");
+
+    if (isNaN(args[0]) || isNaN(args[1])) {
+      msg.channel.send("Pls provide 2 numbers");
+    }
+
+    msg.reply(pythogras(parseInt(args[0]), parseInt(args[1])));
+  }
+
   if (cmd === "herons") {
     if (args.length === 3) {
     } else return msg.reply("Please provide 3 numbers");
@@ -97,8 +108,7 @@ function herons(a, b, c) {
 }
 
 /*
-PYTHAGORAS
-console.log(pythogras(1, 1));
+PYTHAGORAS*/
 
 function pythogras(a, b) {
   let res = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
@@ -108,7 +118,6 @@ function pythogras(a, b) {
     return Error;
   }
 }
-*/
 
 /*
 BINARY
