@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const fetch = require("node-fetch")
-const client = new Discord.Client({intents:["GUILDS", "GUILD_MESSAGES"]});
+const fetch = require("node-fetch");
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
 //defining for slash commands
 const{SlashCommandBuilder} = require("@discordjs/builders");
@@ -10,43 +10,43 @@ const{Routes} = require("discord-api-types/v9");
 
 const prefix = "m!";
 
-function getQoute(){
-    return fetch("https://zenqoutes.io/api/random")
-    .then(res => {
-        return res.json();
+function getQoute() {
+  return fetch("https://zenqoutes.io/api/random")
+    .then((res) => {
+      return res.json();
     })
-    .then(data => {
-        return data[0]["q"] + " -" + data[0]["a"];
-    })
+    .then((data) => {
+      return data[0]["q"] + " -" + data[0]["a"];
+    });
 }
 
 client.once("ready", () => {
-    console.log("[STATUS:BOT IS ONLINE]");
-    client.user.setPresence({
-        game:{
-            name:"MaSci",
-            type:"WATCHING" // LISTENING, PLAYING, STREAMING, WATCHING
-        },
-        status: "idle" // dnd, idle, invisible, online
-    })
-})
+  console.log("[STATUS:BOT IS ONLINE]");
+  client.user.setPresence({
+    game: {
+      name: "MaSci",
+      type: "WATCHING", // LISTENING, PLAYING, STREAMING, WATCHING
+    },
+    status: "idle", // dnd, idle, invisible, online
+  });
+});
 
-client.on("message", msg => {
-    if (
+client.on("message", (msg) => {
+  if (
     !msg.content.toLowerCase().startsWith(prefix.toLowerCase()) ||
     msg.author.bot
-    )
+  )
     return;
 
   const args = msg.content.slice(prefix.length).trim().split(" ");
   const cmd = args.shift().toLowerCase();
   console.log(cmd, args);
 
-     
-    if(cmd === "binary"){
-        msg.channel.send("Sap's Part")
-    }
+  if (cmd === "binary") {
+    msg.channel.send("Sap's Part");
+  }
 
+<<<<<<< HEAD
     // Herons Cmd
     function herons(a, b, c) {
         if (a + b > c) {
@@ -74,13 +74,31 @@ client.on("message", msg => {
         .then((msg) => {
             msg.edit("Ping" + (Date.now() - msg.createdTimestamp))
         });
+=======
+  if (cmd === "herons") {
+    if (args.length === 3) {
+    } else return msg.reply("Please provide 3 numbers");
+
+    if (isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2])) {
+      msg.channel.send("Pls provide 3 numbers");
     }
 
+    if (args[0] + args[1] > args[2] || args[0] + args[1] === args[2]) {
+      return msg.channel.send("Pls make sure the a + b > c");
+    } else {
+      msg.reply(herons(args[0], args[1], args[2]));
+>>>>>>> d617208f41dff9ee1a956e5541ae3e9c4603ee4c
+    }
+  }
 
-})
+  if (cmd == "ping") {
+    msg.channel.send("Pinging to Servers....").then((message) => {
+      msg.edit("Ping" + (Date.now() - message.createdTimestamp));
+    });
+  }
+});
 
-
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN);
 
 /*
 hello there 
@@ -91,7 +109,7 @@ slksd;
 /*
 HERONS FORMULA
 console.log(herons(7, 14, 15));
-
+*/
 function herons(a, b, c) {
   if (a + b > c) {
     s = (a + b + c) / 2;
@@ -101,7 +119,6 @@ function herons(a, b, c) {
     return; //impossible to calculate
   }
 }
-*/
 
 /*
 PYTHAGORAS
