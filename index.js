@@ -42,7 +42,7 @@ client.on("messageCreate", (msg) => {
   console.log(cmd, args);
 
   if (cmd === "binary") {
-    msg.channel.send("Sap's Part");
+    msg.reply(toBinary(args[0]));
   }
 
   if (cmd === "pythogras") {
@@ -96,7 +96,7 @@ client.on("messageCreate", (msg) => {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN2);
 
 /*
 hello there 
@@ -131,18 +131,22 @@ function pythogras(a, b) {
 }
 
 /*
-BINARY
-binaryText("Hello sus");
+BINARY*/
 
-function binaryText(text) {
-  let binary = " ";
-
-  for (var i = 0; i < text.length; i++) {
-    binary += text[i].charCodeAt(0).toString(2) + " ";
+function toBinary(text){
+  binary.value = '';
+  for(i=0; i < text.length; i++){
+      var e=text[i].charCodeAt(0);var s = "";
+      do{
+          var a = e%2;
+          e=(e-a)/2;
+          s=a+s;
+      }while(e!=0);
+      while(s.length<8){s="0"+s;}
+      binary.value+=s;
+      return binary
+      }
   }
-  console.log(binary);
-}
-*/
 
 /*
 AVERAGE SPEED
