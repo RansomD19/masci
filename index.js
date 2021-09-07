@@ -83,6 +83,17 @@ client.on("messageCreate", (msg) => {
       );
     });
   }
+
+  if (cmd === "aspeed" || cmd === "averagespeed") {
+    if (args.length === 2) {
+    } else return msg.reply("Please provide 2 numbers");
+
+    if (isNaN(args[0]) || isNaN(args[1])) {
+      msg.channel.send("Pls provide 2 numbers");
+    }
+
+    msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
+  }
 });
 
 client.login(process.env.TOKEN);
@@ -132,3 +143,12 @@ function binaryText(text) {
   console.log(binary);
 }
 */
+
+/*
+AVERAGE SPEED
+*/
+
+function aspeed(dist, time) {
+  let res = dist / time;
+  return res.toString();
+}
