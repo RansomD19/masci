@@ -2,6 +2,11 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch")
 const client = new Discord.Client({intents:["GUILDS", "GUILD_MESSAGES"]});
 require("dotenv").config();
+//defining for slash commands
+const{SlashCommandBuilder} = require("@discordjs/builders");
+const{REST} = require("@discordjs/rest");
+const{Routes} = require("discord-api-types/v9");
+
 
 const prefix = "m!";
 
@@ -42,20 +47,32 @@ client.on("message", msg => {
         msg.channel.send("Sap's Part")
     }
 
+    // Herons Cmd
+    function herons(a, b, c) {
+        if (a + b > c) {
+          s = (a + b + c) / 2;
+          ar = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+          return ar.toFixed(2);
+        } else {
+          return; //impossible to calculate
+        }
+      }
+
     if(cmd === "herons"){
+        msg.reply(herons(args[0], args[1], args[2]));
         if(args.length === 3){
         } else return msg.reply("Please provide 3 numbers");
 
         if(isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2])){
             msg.channel.send("Pls provide 3 numbers")
         }
-        msg.reply(herons(args[0], args[1], args[2]));
+        
     }
 
     if(cmd == "ping"){
         msg.channel.send("Pinging to Servers....")
-        .then((message) => {
-            msg.edit("Ping" + (Date.now() - message.createdTimestamp))
+        .then((msg) => {
+            msg.edit("Ping" + (Date.now() - msg.createdTimestamp))
         });
     }
 
