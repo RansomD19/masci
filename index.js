@@ -124,6 +124,30 @@ client.on("messageCreate", (msg) => {
 
     msg.reply(res.toString());
   }
+
+  if (cmd === "multiply") {
+    if (args.length < 2) {
+      return msg.reply("Please provide at least 2 numbers");
+    } else {
+    }
+
+    let res = args[0];
+    let nums = args.shift;
+    nums.forEach((num) => {
+      res = res * parseInt(num);
+    });
+
+    msg.reply(res.toString());
+  }
+
+  if (cmd === "divide") {
+    if (args.length === 2) {
+    } else {
+      msg.reply("Please provide 2 numbers");
+    }
+
+    msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
+  }
 });
 
 client.login(process.env.TOKEN);
