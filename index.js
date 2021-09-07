@@ -74,7 +74,7 @@ slksd;
 /*
 HERONS FORMULA
 console.log(herons(7, 14, 15));
-
+*/
 function herons(a, b, c) {
   if (a + b > c) {
     s = (a + b + c) / 2;
@@ -84,7 +84,6 @@ function herons(a, b, c) {
     return; //impossible to calculate
   }
 }
-*/
 
 /*
 PYTHAGORAS
