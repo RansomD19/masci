@@ -109,6 +109,21 @@ client.on("messageCreate", (msg) => {
 
     msg.reply(res.toString());
   }
+
+  if (cmd === "sub") {
+    if (args.length < 2) {
+      return msg.reply("Please provide at least 2 numbers");
+    } else {
+    }
+
+    let res = args[0] * 2;
+
+    args.forEach((num) => {
+      res = res - parseInt(num);
+    });
+
+    msg.reply(res.toString());
+  }
 });
 
 client.login(process.env.TOKEN);
