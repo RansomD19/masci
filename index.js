@@ -41,7 +41,7 @@ client.on("message", msg => {
         } else return msg.reply("Please provide 3 numbers");
         
         if(isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2]){
-           return msg.reply("Please provide 3 **numbers**);
+           return msg.reply("Please provide 3 **numbers**");
            }
         herons(args[0], args[1], args[2]);
     }
