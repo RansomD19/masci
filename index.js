@@ -61,13 +61,15 @@ client.on("message", (msg) => {
         herons(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]))
       );
     } else {
-      return msg.channel.send("Pls make sure the a + b > c");
+      return msg.channel.send("Pls make sure the a + b > c and a + c > b");
     }
   }
 
   if (cmd == "ping") {
     msg.channel.send("Pinging to Servers....").then((message) => {
-      msg.edit("Ping" + (Date.now() - message.createdTimestamp));
+      message.edit(
+        "Ping: " + (message.createdTimestamp - msg.createdTimestamp)
+      );
     });
   }
 });
