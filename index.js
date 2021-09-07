@@ -3,10 +3,9 @@ const fetch = require("node-fetch");
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
 //defining for slash commands
-const{SlashCommandBuilder} = require("@discordjs/builders");
-const{REST} = require("@discordjs/rest");
-const{Routes} = require("discord-api-types/v9");
-
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
 
 const prefix = "m!";
 
@@ -54,7 +53,10 @@ client.on("message", (msg) => {
       msg.channel.send("Pls provide 3 numbers");
     }
 
-    if (parseInt(args[0]) + parseInt(args[1]) > parseInt(args[2])) {
+    if (
+      parseInt(args[0]) + parseInt(args[1]) > parseInt(args[2]) ||
+      parseInt(args[0]) + parseInt(args[2]) > parseInt(args[1])
+    ) {
       msg.reply(
         herons(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]))
       );
