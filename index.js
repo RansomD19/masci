@@ -49,7 +49,7 @@ client.on("message", (msg) => {
       msg.channel.send("Pls provide 3 numbers");
     }
 
-    if (args[0] + args[1] > args[2] || args[0] + args[1] > args[2]) {
+    if (args[0] + args[1] > args[2] || args[0] + args[1] === args[2]) {
       return msg.channel.send("Pls make sure the a + b > c");
     } else {
       msg.reply(herons(args[0], args[1], args[2]));
