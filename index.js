@@ -192,6 +192,20 @@ client.on("messageCreate", (msg) => {
     }
     if (args[0]) msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));
   }
+
+  if (cmd === "iss") {
+    fetch("https://api.wheretheiss.at/v1/satellites/25544")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        msg.reply(
+          `The ISS is currently at ${data.latitude.toFixed(
+            3
+          )} latitude and ${data.longitude.toFixed(3)} longitude `
+        );
+      });
+  }
 });
 
 client.login(process.env.TOKEN);
