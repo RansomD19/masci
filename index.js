@@ -42,22 +42,24 @@ client.on("messageCreate", (msg) => {
   console.log(cmd, args);
 
   if (cmd === "binary") {
-    let sentence = args.slice(0).join(' ');
-    console.log(sentence)
+    let sentence = args.slice(0).join(" ");
+    console.log(sentence);
 
-    binary.value = '';
-    for(i=0; i < sentence.length; i++){
-        var e=sentence[i].charCodeAt(0);var s = "";
-        do{
-            var a = e%2;
-            e=(e-a)/2;
-            s=a+s;
-        }while(e!=0);
-        while(s.length<8){s="0"+s;}
-        binary.value+=s + " ";
-        msg.reply(binary.value);
-        }
-    
+    binary = "";
+    for (i = 0; i < sentence.length; i++) {
+      var e = sentence[i].charCodeAt(0);
+      var s = "";
+      do {
+        var a = e % 2;
+        e = (e - a) / 2;
+        s = a + s;
+      } while (e != 0);
+      while (s.length < 8) {
+        s = "0" + s;
+      }
+      binary += s + " ";
+    }
+    msg.reply(binary);
   }
 
   if (cmd === "pythogras") {
@@ -74,7 +76,7 @@ client.on("messageCreate", (msg) => {
   if (cmd === "herons") {
     if (args.length === 3) {
     } else return msg.reply("Please provide 3 numbers");
- 
+
     if (isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2])) {
       msg.channel.send("Pls provide 3 numbers");
     }
@@ -225,7 +227,6 @@ function pythogras(a, b) {
     return Error;
   }
 }
-
 
 /*
 AVERAGE SPEED
