@@ -202,7 +202,7 @@ client.on("messageCreate", (msg) => {
         msg.reply(
           `The ISS is currently at ${data.latitude.toFixed(
             3
-          )} latitude and ${data.longitude.toFixed(3)} longitude`
+          )} latitude and ${data.longitude.toFixed(3)} longitude `
         );
       });
   }
