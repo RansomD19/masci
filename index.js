@@ -107,15 +107,6 @@ client.on("messageCreate", (msg) => {
     client.commands.get("multiply").execute(msg, args);
   }
 
-  if (cmd == "mcstatusj"){
-    mc.status(`${args[0]}`)
-    .then((res) => {
-      msg.reply(`Name:${res.host}\nVersion:${res.version}`);
-    })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-  }
 
 
   if (cmd === "divide") {

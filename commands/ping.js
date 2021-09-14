@@ -6,7 +6,7 @@ module.exports = {
   execute(msg, args) {
     msg.channel.send("Pinging to Servers....").then((message) => {
       message.edit(
-        "Ping: " + (message.createdTimestamp - msg.createdTimestamp)
+        "```Ping: " + (message.createdTimestamp - msg.createdTimestamp + "```")
       );
     });
   },

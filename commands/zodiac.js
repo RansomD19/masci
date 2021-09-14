@@ -32,8 +32,8 @@ module.exports = {
     }
     if (args[0]) {
       const embed = new MessageEmbed()
-        .setTitle(`Your Zodiac!`)
-        .setColor("#57A773")
+        .setTitle(`Welcome to the Club!`)
+        .setColor("#FFA400")
         .setDescription(zodiac(parseInt(args[1]), parseInt(args[0])));
       msg.reply({ embeds: [embed] });
 

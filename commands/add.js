@@ -17,7 +17,7 @@ module.exports = {
       res = res + parseInt(num);
     });
     const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
+      .setTitle(`Result`)
       .setColor("#57A773")
       .setDescription(res.toString());
     msg.reply({ embeds: [embed] });
