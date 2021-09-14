@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
-
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
 //defining for slash commands
@@ -108,7 +107,6 @@ client.on("messageCreate", (msg) => {
     client.commands.get("multiply").execute(msg, args);
   }
 
-<<<<<<< HEAD
   if (cmd == "mcstatusj"){
     mc.status(`${args[0]}`)
     .then((res) => {
@@ -117,20 +115,12 @@ client.on("messageCreate", (msg) => {
     // .catch((error) => {
     //   console.log(error);
     // })
+  }
 
-
-=======
-  //
->>>>>>> c31b27b31ff187cc2cbabb4ac71d88ddd6e12d3f
 
   if (cmd === "divide") {
     client.commands.get("divide").execute(msg, args);
   }
-<<<<<<< HEAD
-});
-client.login(process.env.TOKEN2);
-=======
->>>>>>> c31b27b31ff187cc2cbabb4ac71d88ddd6e12d3f
 
   //
 
