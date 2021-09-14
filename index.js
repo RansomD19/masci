@@ -4,13 +4,25 @@ const { MessageEmbed } = require("discord.js");
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
-const mc = require("minecraft-server-util");
 //defining for slash commands
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
 const prefix = "m!";
+
+client.commands = new Discord.Collection();
+const fs = require("fs");
+
+const commandFiles = fs
+  .readdirSync("./commands")
+  .filter((file) => file.endsWith(".js"));
+
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+
+  client.commands.set(command.name, command);
+}
 
 function getQoute() {
   return fetch("https://zenqoutes.io/api/random")
@@ -44,282 +56,82 @@ client.on("messageCreate", (msg) => {
   const cmd = args.shift().toLowerCase();
   // console.log(cmd, args);
 
-  if (cmd === "binary") {
-    let sentence = args.slice(0).join(" ");
-
-    binary = "";
-    for (i = 0; i < sentence.length; i++) {
-      var e = sentence[i].charCodeAt(0);
-      var s = "";
-      do {
-        var a = e % 2;
-        e = (e - a) / 2;
-        s = a + s;
-      } while (e != 0);
-      while (s.length < 8) {
-        s = "0" + s;
-      }
-      binary += s + " ";
-    }
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription("`" + binary + "`");
-    msg.reply({ embeds: [embed] });
+  if (cmd === "help") {
+    client.commands.get("help").execute(msg, client, args);
   }
+
+  //
+
+  if (cmd === "binary") {
+    client.commands.get("binary").execute(msg, args);
+  }
+
+  //
 
   if (cmd === "pythogras") {
-    if (args.length === 2) {
-    } else return msg.reply("Please provide 2 numbers");
-
-    if (isNaN(args[0]) || isNaN(args[1])) {
-      msg.channel.send("Pls provide 2 numbers");
-    }
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription(pythogras(parseInt(args[0]), parseInt(args[1])));
-    msg.reply({ embeds: [embed] });
+    client.commands.get("pythogras").execute(msg, args);
   }
+
+  //
 
   if (cmd === "herons") {
-    if (args.length === 3) {
-    } else return msg.reply("Please provide 3 numbers");
-
-    if (isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2])) {
-      msg.channel.send("Pls provide 3 numbers");
-    }
-
-    if (
-      parseInt(args[0]) + parseInt(args[1]) > parseInt(args[2]) &&
-      parseInt(args[0]) + parseInt(args[2]) > parseInt(args[1])
-    ) {
-      console.log(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]));
-      const embed = new MessageEmbed()
-        .setTitle(`Your answer!`)
-        .setColor("#57A773")
-        .setDescription(
-          herons(
-            parseInt(args[0]),
-            parseInt(args[1]),
-            parseInt(args[2])
-          ).toString()
-        );
-      msg.reply({ embeds: [embed] });
-    } else {
-      return msg.channel.send("Pls make sure the a + b > c and a + c > b");
-    }
+    client.commands.get("herons").execute(msg, args);
   }
+
+  //
 
   if (cmd == "ping") {
-    msg.channel.send("Pinging to Servers....").then((message) => {
-      message.edit(
-        "Ping: " + (message.createdTimestamp - msg.createdTimestamp)
-      );
-    });
+    client.commands.get("ping").execute(msg, args);
   }
+
+  //
 
   if (cmd === "aspeed" || cmd === "averagespeed") {
-    if (args.length === 2) {
-    } else return msg.reply("Please provide 2 numbers");
-
-    if (isNaN(args[0]) || isNaN(args[1])) {
-      msg.channel.send("Pls provide 2 numbers");
-    }
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription(aspeed(parseInt(args[0]), parseInt(args[1])));
-    msg.reply({ embeds: [embed] });
+    client.commands.get("aspeed").execute(msg, args);
   }
+
+  //
 
   if (cmd === "add") {
-    if (args.length < 2) {
-      return msg.reply("Please provide at least 2 numbers");
-    } else {
-    }
-
-    let res = 0;
-
-    args.forEach((num) => {
-      res = res + parseInt(num);
-    });
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription(res.toString());
-    msg.reply({ embeds: [embed] });
+    client.commands.get("add").execute(msg, args);
   }
+
+  //
 
   if (cmd === "sub") {
-    if (args.length < 2) {
-      return msg.reply("Please provide at least 2 numbers");
-    } else {
-    }
-
-    let res = args[0] * 2;
-
-    args.forEach((num) => {
-      res = res - parseInt(num);
-    });
-
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription(res.toString());
-    msg.reply({ embeds: [embed] });
+    client.commands.get("sub").execute(msg, args);
   }
+
+  //
 
   if (cmd === "multiply") {
-    if (args.length < 2) {
-      return msg.reply("Please provide at least 2 numbers");
-    } else {
-    }
-
-    let res = args[0];
-    let nums = args.splice(1);
-
-    nums.forEach((num) => {
-      res = res * parseInt(num);
-    });
-
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription(res.toString());
-    msg.reply({ embeds: [embed] });
+    client.commands.get("multiply").execute(msg, args);
   }
+
+  //
 
   if (cmd === "divide") {
-    if (args.length === 2) {
-    } else {
-      msg.reply("Please provide 2 numbers");
-    }
-    const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription(aspeed(parseInt(args[0]), parseInt(args[1])));
-    msg.reply({ embeds: [embed] });
-    // msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
+    client.commands.get("divide").execute(msg, args);
   }
 
-  if (cmd === "zodiac") {
-    if (args.length === 2) {
-    } else
-      return msg.reply(
-        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
-      );
+  //
 
-    if (isNaN(args[0]) || isNaN(args[1])) {
-      return msg.reply(
-        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
-      );
-    }
-
-    if (args[0] < 0 || args[0] > 12) {
-      return msg.reply(
-        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
-      );
-    }
-
-    if (args[1] < 1 || args[1] > 31) {
-      return msg.reply(
-        "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
-      );
-    }
-    if (args[0]) {
-      const embed = new MessageEmbed()
-        .setTitle(`Your Zodiac!`)
-        .setColor("#57A773")
-        .setDescription(zodiac(parseInt(args[1]), parseInt(args[0])));
-      msg.reply({ embeds: [embed] });
-
-      // msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));
-    }
+  if (cmd === "zodiac" || cmd === "zodiacsign") {
+    client.commands.get("zodiac").execute(msg, args);
   }
+
+  //
 
   if (cmd === "iss") {
-    fetch("https://api.wheretheiss.at/v1/satellites/25544")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        msg.reply(
-          `The ISS is currently at ${data.latitude.toFixed(
-            3
-          )} latitude and ${data.longitude.toFixed(3)} longitude `
-        );
-      });
+    client.commands.get("iss").execute(msg, args);
   }
 
-  if (cmd == "mcstatusj"){
-    mc.status(`${args[0]}`)
-    .then((res) => {
-      msg.reply(
-        `Name:${res.host}\nVersion:${res.version}`);
-    })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
+  //
 
-
-
+  if (cmd == "mcstatusj") {
+    client.commands.get("mcstatus").execute(msg, args);
   }
+
+  //
 });
 client.login(process.env.TOKEN);
-
-
-// HERONS FORMULA
-function herons(a, b, c) {
-  if (a + b > c) {
-    s = (a + b + c) / 2;
-    ar = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-    return ar.toFixed(2);
-  } else {
-    return; //impossible to calculate
-  }
-}
-
-
-// PYTHAGORAS
-function pythogras(a, b) {
-  let res = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-  if (res > 0) {
-    return res.toFixed(2);
-  } else {
-    return Error;
-  }
-}
-
-
-// AVERAGE SPEED
-function aspeed(dist, time) {
-  let res = dist / time;
-  return res.toString();
-}
-
-
-// ZODIAC
-function zodiac(day, month) {
-  var zodiac = [
-    "",
-    "Capricorn",
-    "Aquarius",
-    "Pisces",
-    "Aries",
-    "Taurus",
-    "Gemini",
-    "Cancer",
-    "Leo",
-    "Virgo",
-    "Libra",
-    "Scorpio",
-    "Sagittarius",
-    "Capricorn",
-  ];
-  var last_day = ["", 19, 18, 20, 20, 21, 21, 22, 22, 21, 22, 21, 20, 19];
-  return day > last_day[month] ? zodiac[month * 1 + 1] : zodiac[month];
-}
-
-
-
