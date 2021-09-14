@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js");
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
+const mc = require("minecraft-server-util");
 //defining for slash commands
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { REST } = require("@discordjs/rest");
@@ -41,11 +42,10 @@ client.on("messageCreate", (msg) => {
 
   const args = msg.content.slice(prefix.length).trim().split(" ");
   const cmd = args.shift().toLowerCase();
-  console.log(cmd, args);
+  // console.log(cmd, args);
 
   if (cmd === "binary") {
     let sentence = args.slice(0).join(" ");
-    console.log(sentence);
 
     binary = "";
     for (i = 0; i < sentence.length; i++) {
@@ -251,20 +251,25 @@ client.on("messageCreate", (msg) => {
         );
       });
   }
-});
 
+  if (cmd == "mcstatusj"){
+    mc.status(`${args[0]}`)
+    .then((res) => {
+      msg.reply(
+        `Name:${res.host}\nVersion:${res.version}`);
+    })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
+
+
+
+  }
+});
 client.login(process.env.TOKEN);
 
-/*
-hello there 
-eha 
-slksd;
-*/
 
-/*
-HERONS FORMULA
-console.log(herons(7, 14, 15));
-*/
+// HERONS FORMULA
 function herons(a, b, c) {
   if (a + b > c) {
     s = (a + b + c) / 2;
@@ -275,9 +280,8 @@ function herons(a, b, c) {
   }
 }
 
-/*
-PYTHAGORAS*/
 
+// PYTHAGORAS
 function pythogras(a, b) {
   let res = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
   if (res > 0) {
@@ -287,14 +291,13 @@ function pythogras(a, b) {
   }
 }
 
-/*
-AVERAGE SPEED
-*/
 
+// AVERAGE SPEED
 function aspeed(dist, time) {
   let res = dist / time;
   return res.toString();
 }
+
 
 // ZODIAC
 function zodiac(day, month) {
@@ -317,3 +320,6 @@ function zodiac(day, month) {
   var last_day = ["", 19, 18, 20, 20, 21, 21, 22, 22, 21, 22, 21, 20, 19];
   return day > last_day[month] ? zodiac[month * 1 + 1] : zodiac[month];
 }
+
+
+
