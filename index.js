@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
+const { MessageEmbed } = require("discord.js");
+
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
 //defining for slash commands
@@ -59,7 +61,11 @@ client.on("messageCreate", (msg) => {
       }
       binary += s + " ";
     }
-    msg.reply(binary);
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription("`" + binary + "`");
+    msg.reply({ embeds: [embed] });
   }
 
   if (cmd === "pythogras") {
@@ -69,8 +75,11 @@ client.on("messageCreate", (msg) => {
     if (isNaN(args[0]) || isNaN(args[1])) {
       msg.channel.send("Pls provide 2 numbers");
     }
-
-    msg.reply(pythogras(parseInt(args[0]), parseInt(args[1])));
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription(pythogras(parseInt(args[0]), parseInt(args[1])));
+    msg.reply({ embeds: [embed] });
   }
 
   if (cmd === "herons") {
@@ -82,12 +91,21 @@ client.on("messageCreate", (msg) => {
     }
 
     if (
-      parseInt(args[0]) + parseInt(args[1]) > parseInt(args[2]) ||
+      parseInt(args[0]) + parseInt(args[1]) > parseInt(args[2]) &&
       parseInt(args[0]) + parseInt(args[2]) > parseInt(args[1])
     ) {
-      msg.reply(
-        herons(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]))
-      );
+      console.log(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]));
+      const embed = new MessageEmbed()
+        .setTitle(`Your answer!`)
+        .setColor("#57A773")
+        .setDescription(
+          herons(
+            parseInt(args[0]),
+            parseInt(args[1]),
+            parseInt(args[2])
+          ).toString()
+        );
+      msg.reply({ embeds: [embed] });
     } else {
       return msg.channel.send("Pls make sure the a + b > c and a + c > b");
     }
@@ -108,8 +126,11 @@ client.on("messageCreate", (msg) => {
     if (isNaN(args[0]) || isNaN(args[1])) {
       msg.channel.send("Pls provide 2 numbers");
     }
-
-    msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription(aspeed(parseInt(args[0]), parseInt(args[1])));
+    msg.reply({ embeds: [embed] });
   }
 
   if (cmd === "add") {
@@ -123,8 +144,11 @@ client.on("messageCreate", (msg) => {
     args.forEach((num) => {
       res = res + parseInt(num);
     });
-
-    msg.reply(res.toString());
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription(res.toString());
+    msg.reply({ embeds: [embed] });
   }
 
   if (cmd === "sub") {
@@ -139,7 +163,11 @@ client.on("messageCreate", (msg) => {
       res = res - parseInt(num);
     });
 
-    msg.reply(res.toString());
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription(res.toString());
+    msg.reply({ embeds: [embed] });
   }
 
   if (cmd === "multiply") {
@@ -149,12 +177,17 @@ client.on("messageCreate", (msg) => {
     }
 
     let res = args[0];
-    let nums = args.shift;
+    let nums = args.splice(1);
+
     nums.forEach((num) => {
       res = res * parseInt(num);
     });
 
-    msg.reply(res.toString());
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription(res.toString());
+    msg.reply({ embeds: [embed] });
   }
 
   if (cmd === "divide") {
@@ -162,8 +195,12 @@ client.on("messageCreate", (msg) => {
     } else {
       msg.reply("Please provide 2 numbers");
     }
-
-    msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
+    const embed = new MessageEmbed()
+      .setTitle(`Your answer!`)
+      .setColor("#57A773")
+      .setDescription(aspeed(parseInt(args[0]), parseInt(args[1])));
+    msg.reply({ embeds: [embed] });
+    // msg.reply(aspeed(parseInt(args[0]), parseInt(args[1])));
   }
 
   if (cmd === "zodiac") {
@@ -190,7 +227,15 @@ client.on("messageCreate", (msg) => {
         "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
       );
     }
-    if (args[0]) msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));
+    if (args[0]) {
+      const embed = new MessageEmbed()
+        .setTitle(`Your Zodiac!`)
+        .setColor("#57A773")
+        .setDescription(zodiac(parseInt(args[1]), parseInt(args[0])));
+      msg.reply({ embeds: [embed] });
+
+      // msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));
+    }
   }
 
   if (cmd === "iss") {
