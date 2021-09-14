@@ -210,8 +210,7 @@ client.on("messageCreate", (msg) => {
   if (cmd == "mcstatusj"){
     mc.status(`${args[0]}`)
     .then((res) => {
-      msg.reply(
-        `Name:${res.host}\nVersion:${res.version}`);
+      msg.reply(`Name:${res.host}\nVersion:${res.version}`);
     })
     // .catch((error) => {
     //   console.log(error);
@@ -221,7 +220,7 @@ client.on("messageCreate", (msg) => {
 
   }
 });
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN2);
 
 
 // HERONS FORMULA
