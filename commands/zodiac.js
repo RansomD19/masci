@@ -7,9 +7,7 @@ module.exports = {
   usage: "m!zodiacsign [birth month] [birth day]",
   description: "Gives your zodiac sign based on your month and day",
   execute(msg, args) {
-    const errorembed = new MessageEmbed()
-      .setTitle("Error!")
-      .setColor("#EE6352");
+    const errorembed = new MessageEmbed().setColor("#EE6352");
     if (args.length === 2) {
     } else {
       errorembed.setDescription(
