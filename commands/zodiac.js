@@ -93,10 +93,16 @@ module.exports = {
     }
     if (args[0]) {
       const embed = new MessageEmbed()
+        // <<<<<<< HEAD
         .setImage(image)
         .setTitle(`       Your Zodiac!`)
         .setColor("#57A773");
 
+      // =======
+      // .setTitle(`Welcome to the Club!`)
+      // .setColor("#FFA400")
+      // .setDescription(zodiac(parseInt(args[1]), parseInt(args[0])));
+      // >>>>>>> f1ed38fedfa27b2cf24878437012f9b867e54294
       msg.reply({ embeds: [embed] });
 
       // msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));

@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
-
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require("dotenv").config();
 //defining for slash commands
@@ -108,7 +107,7 @@ client.on("messageCreate", (msg) => {
     client.commands.get("multiply").execute(msg, args);
   }
 
-  //
+
 
   if (cmd === "divide") {
     client.commands.get("divide").execute(msg, args);

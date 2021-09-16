@@ -23,9 +23,9 @@ module.exports = {
       binary += s + " ";
     }
     const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
-      .setColor("#57A773")
-      .setDescription("`" + binary + "`");
+      .setTitle(`Translation`)
+      .setColor("#FFA400")
+      .setDescription("```" + binary + "```");
     msg.reply({ embeds: [embed] });
   },
 };

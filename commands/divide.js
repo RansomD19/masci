@@ -11,7 +11,7 @@ module.exports = {
       msg.reply("Please provide 2 numbers");
     }
     const embed = new MessageEmbed()
-      .setTitle(`Your answer!`)
+      .setTitle(`Result`)
       .setColor("#57A773")
       .setDescription(aspeed(parseInt(args[0]), parseInt(args[1])));
     msg.reply({ embeds: [embed] });

@@ -19,7 +19,7 @@ module.exports = {
     ) {
       console.log(parseInt(args[0]), parseInt(args[1]), parseInt(args[2]));
       const embed = new MessageEmbed()
-        .setTitle(`Your answer!`)
+        .setTitle(`Result`)
         .setColor("#57A773")
         .setDescription(
           herons(
