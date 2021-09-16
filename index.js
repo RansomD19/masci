@@ -53,7 +53,7 @@ client.on("messageCreate", (msg) => {
 
   const args = msg.content.slice(prefix.length).trim().split(" ");
   const cmd = args.shift().toLowerCase();
-  // console.log(cmd, args);
+  console.log(cmd, args);
 
   if (cmd === "help") {
     client.commands.get("help").execute(msg, client, args);
