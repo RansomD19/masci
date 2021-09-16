@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const mc = require("minecraft-server-util");
-const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
+const errorembed = new MessageEmbed().setColor("#EE6352");
 
 module.exports = {
   name: "mcstatus",

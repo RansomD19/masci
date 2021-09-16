@@ -107,8 +107,6 @@ client.on("messageCreate", (msg) => {
     client.commands.get("multiply").execute(msg, args);
   }
 
-
-
   if (cmd === "divide") {
     client.commands.get("divide").execute(msg, args);
   }
