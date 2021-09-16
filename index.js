@@ -56,7 +56,7 @@ client.on("messageCreate", (msg) => {
   // console.log(cmd, args);
 
   if (cmd === "help") {
-    client.commands.get("help").execute(msg, client, args);
+    client.commands.get("help").execute(msg, args, client);
   }
 
   //
@@ -130,5 +130,6 @@ client.on("messageCreate", (msg) => {
   }
 
   //
+  // console.log(client.commands.Maths);
 });
 client.login(process.env.TOKEN);
