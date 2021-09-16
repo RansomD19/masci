@@ -102,7 +102,7 @@ module.exports = {
       const embed = new MessageEmbed()
         // <<<<<<< HEAD
         .setImage(image)
-        .setTitle(`       Your Zodiac!`)
+        .setTitle(`\u200b Your Zodiac!`)
         .setColor("#57A773");
 
       // =======

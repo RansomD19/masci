@@ -23,21 +23,40 @@ module.exports = {
     //     console.log(cmd.name2);
     //   }
     // });
-
+    
     if (
       args[0] === "maths" ||
       args[0] === "math" ||
       args[0] === "mathematics"
     ) {
-      const embed = new MessageEmbed().setTitle("Maths");
+      const embed = new MessageEmbed().setTitle("**Maths**");
       let desc = "";
       client.commands.forEach((cmd) => {
         if (cmd.category === "maths") {
-          desc = desc + `${cmd.name2}\n${cmd.description}\n\n`;
+          desc = desc + `**${cmd.name}** | [*${cmd.aliases}*]\n \`${cmd.usage}\`\n\n`;
+        }
+      });
+      embed.setDescription(desc);
+      embed.setColor("#F7FFF7")
+      msg.reply({ embeds: [embed] });
+    }
+    if (
+      args[0] === "sci" ||
+      args[0] === "science"
+    ) {
+      const embed = new MessageEmbed().setTitle("**Science**");
+      let desc = "";
+      client.commands.forEach((cmd) => {
+        if (cmd.category === "science") {
+          desc = desc + `**${cmd.name}** | [*${cmd.aliases}*]\n \`${cmd.usage}\`  \n\n`;
         }
       });
       embed.setDescription(desc);
       msg.reply({ embeds: [embed] });
+    }else{
+      const embed = new MessageEmbed()
+      .setTitle("Command List")
+      msg.reply({ embeds: [embed]});
     }
   },
 };
