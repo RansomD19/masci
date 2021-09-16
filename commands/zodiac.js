@@ -30,11 +30,73 @@ module.exports = {
         "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
       );
     }
+
+    let sign = zodiac(parseInt(args[1]), parseInt(args[0]));
+    let image;
+    if (sign === "Leo") {
+      image =
+        "https://cdn.discordapp.com/attachments/887573194947575868/887618271258480640/leo.png";
+    }
+
+    if (sign === "Aquarius") {
+      image =
+        "https://cdn.discordapp.com/attachments/887573194947575868/887618127993667594/aquarius.png";
+    }
+
+    if (sign === "Capricorn") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620013329088572/capricorn.png";
+    }
+
+    if (sign === "Pisces") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620033411448892/pisces.png";
+    }
+
+    if (sign === "Aries") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620009159983114/aries.png";
+    }
+
+    if (sign === "Taurus") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620153766985748/taurus.png";
+    }
+    if (sign === "Gemini") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620016453857280/gemini.png";
+    }
+
+    if (sign === "Cancer") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620011718488064/cancer.png";
+    }
+
+    if (sign === "Virgo") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620063308447774/virgo.png";
+    }
+
+    if (sign === "Libra") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620028407631932/libra.png";
+    }
+
+    if (sign === "Scorpio") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620043419037696/scorpio.png";
+    }
+
+    if (sign === "Sagittarius") {
+      image =
+        "https://cdn.discordapp.com/attachments/887619841031307274/887620038989865000/sagittarius.png";
+    }
     if (args[0]) {
       const embed = new MessageEmbed()
-        .setTitle(`Your Zodiac!`)
-        .setColor("#57A773")
-        .setDescription(zodiac(parseInt(args[1]), parseInt(args[0])));
+        .setImage(image)
+        .setTitle(`       Your Zodiac!`)
+        .setColor("#57A773");
+
       msg.reply({ embeds: [embed] });
 
       // msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));

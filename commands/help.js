@@ -8,18 +8,18 @@ module.exports = {
   execute(msg, client, args) {
     let cmds = [
       "add",
-      "aspeed",
-      "binary",
-      "divide",
-      "help",
-      "herons",
-      "iss",
-      "mcstatus",
-      "multiply",
-      "ping",
-      "pythogras",
-      "sub",
-      "zodiac",
+      // "aspeed",
+      // "binary",
+      // "divide",
+      // "help",
+      // "herons",
+      // "iss",
+      // "mcstatus",
+      // "multiply",
+      // "ping",
+      // "pythogras",
+      // "sub",
+      // "zodiac",
     ];
 
     let al = [
