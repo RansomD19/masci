@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
 
 module.exports = {
   name: "add",
@@ -7,7 +8,8 @@ module.exports = {
   description: "Adds all the numbers given!",
   execute(msg, args) {
     if (args.length < 2) {
-      return msg.reply("Please provide at least 2 numbers");
+      errorembed.setDescription("Please provide at least 2 numbers");
+      return msg.reply({ embeds: [errorembed] });
     } else {
     }
 

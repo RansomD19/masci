@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
 
 module.exports = {
   name: "binary",

@@ -7,28 +7,36 @@ module.exports = {
   usage: "m!zodiacsign [birth month] [birth day]",
   description: "Gives your zodiac sign based on your month and day",
   execute(msg, args) {
+    const errorembed = new MessageEmbed()
+      .setTitle("Error!")
+      .setColor("#EE6352");
     if (args.length === 2) {
-    } else
-      return msg.reply(
+    } else {
+      errorembed.setDescription(
         "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
       );
+      return msg.reply({ embeds: [errorembed] });
+    }
 
     if (isNaN(args[0]) || isNaN(args[1])) {
-      return msg.reply(
+      errorembed.setDescription(
         "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
       );
+      return msg.reply({ embeds: [errorembed] });
     }
 
     if (args[0] < 0 || args[0] > 12) {
-      return msg.reply(
+      errorembed.setDescription(
         "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
       );
+      return msg.reply({ embeds: [errorembed] });
     }
 
     if (args[1] < 1 || args[1] > 31) {
-      return msg.reply(
+      errorembed.setDescription(
         "Please provide your `month and date` respectively, **example** m!zodiac 08 01 (august 1st)"
       );
+      return msg.reply({ embeds: [errorembed] });
     }
 
     let sign = zodiac(parseInt(args[1]), parseInt(args[0]));

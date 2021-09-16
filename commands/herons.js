@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
 
 module.exports = {
   name: "herons",
@@ -7,10 +8,14 @@ module.exports = {
   description: "Finds the area of the triangle using the herons formula!",
   execute(msg, args) {
     if (args.length === 3) {
-    } else return msg.reply("Please provide 3 numbers");
+    } else {
+      errorembed.setDescription("Please provide 3 numbers");
+      return msg.reply({ embeds: [errorembed] });
+    }
 
     if (isNaN(args[0]) || isNaN(args[1]) || isNaN(args[2])) {
-      msg.channel.send("Pls provide 3 numbers");
+      errorembed.setDescription("Pls provide 3 numbers");
+      return msg.reply({ embeds: [errorembed] });
     }
 
     if (
@@ -30,7 +35,8 @@ module.exports = {
         );
       msg.reply({ embeds: [embed] });
     } else {
-      return msg.channel.send("Pls make sure the a + b > c and a + c > b");
+      errorembed.setDescription("Pls make sure the a + b > c and a + c > b");
+      msg.reply({ embeds: [errorembed] });
     }
   },
 };

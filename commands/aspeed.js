@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-
+const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
 module.exports = {
   name: "aspeed",
   name2: "AverageSpeed",
@@ -8,10 +8,14 @@ module.exports = {
   aliases: ["aspeed", "averagespeed"],
   execute(msg, args) {
     if (args.length === 2) {
-    } else return msg.reply("Please provide 2 numbers");
+    } else {
+      errorembed.setDescription("Please provide 2 numbers");
+      return msg.reply({ embeds: [errorembed] });
+    }
 
     if (isNaN(args[0]) || isNaN(args[1])) {
-      msg.channel.send("Pls provide 2 numbers");
+      errorembed.setDescription("Pls provide 2 numbers");
+      return msg.reply({ embeds: [errorembed] });
     }
     const embed = new MessageEmbed()
       .setTitle(`Result`)

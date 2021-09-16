@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
 
 module.exports = {
   name: "divide",
@@ -8,7 +9,8 @@ module.exports = {
   execute(msg, args) {
     if (args.length === 2) {
     } else {
-      msg.reply("Please provide 2 numbers");
+      errorembed.setDescription("Please provide 2 numbers");
+      return msg.reply({ embeds: [errorembed] });
     }
     const embed = new MessageEmbed()
       .setTitle(`Result`)

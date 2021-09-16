@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const mc = require("minecraft-server-util");
+const errorembed = new MessageEmbed().setTitle("Error!").setColor("#EE6352");
 
 module.exports = {
   name: "mcstatus",
@@ -16,17 +17,14 @@ module.exports = {
         emoji = ":white_check_mark:";
       }
       const embed = new MessageEmbed()
-      .setTitle(`Server ${res.host}`)
-      .setColor("#FFA400")
-      .setDescription(res.version.slice(4));
+        .setTitle(`Server ${res.host}`)
+        .setColor("#FFA400")
+        .setDescription(res.version.slice(4));
       msg.reply({ embeds: [embed] });
       // msg.reply(`Name:${res.host}\nStatus: ${emoji} ${res.version.slice(4)}`);
     });
     // .catch((error) => {
     //   console.log(error);
     // })
-    
-
   },
-  
 };
