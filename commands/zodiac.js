@@ -102,17 +102,9 @@ module.exports = {
       const embed = new MessageEmbed()
         // <<<<<<< HEAD
         .setImage(image)
-        .setTitle(`\u200b Your Zodiac!`)
-        .setColor("#57A773");
-
-      // =======
-      // .setTitle(`Welcome to the Club!`)
-      // .setColor("#FFA400")
-      // .setDescription(zodiac(parseInt(args[1]), parseInt(args[0])));
-      // >>>>>>> f1ed38fedfa27b2cf24878437012f9b867e54294
+        .setTitle(`You Zodiac Sign!`)
+        .setColor("#FFA400");
       msg.reply({ embeds: [embed] });
-
-      // msg.reply(zodiac(parseInt(args[1]), parseInt(args[0])));
     }
   },
 };
