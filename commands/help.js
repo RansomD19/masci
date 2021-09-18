@@ -5,6 +5,10 @@ module.exports = {
   name2: "Help",
   usage: "m!help (category) || m!help ",
   execute(msg, args, client) {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> c745ef31b8fde88f52cf535644332b84bfe7636a
     if (
       args[0] === "maths" ||
       args[0] === "math" ||
@@ -18,9 +22,19 @@ module.exports = {
         }
       });
       embed.setDescription(desc);
+<<<<<<< HEAD
       embed.setColor("#F7FFF7");
       msg.reply({ embeds: [embed] });
     } else if (args[0] === "sci" || args[0] === "science") {
+=======
+      embed.setColor("#F7FFF7")
+      msg.reply({ embeds: [embed] });
+    }
+    else if (
+      args[0] === "sci" ||
+      args[0] === "science"
+    ) {
+>>>>>>> c745ef31b8fde88f52cf535644332b84bfe7636a
       const embed = new MessageEmbed().setTitle("**Science**");
       let desc = "";
       client.commands.forEach((cmd) => {
@@ -30,7 +44,15 @@ module.exports = {
       });
       embed.setDescription(desc);
       msg.reply({ embeds: [embed] });
+<<<<<<< HEAD
     } else if (args[0] === "misc" || args[0] === "miscellanious") {
+=======
+    }
+    else if (
+      args[0] === "misc" ||
+      args[0] === "miscellanious"
+    ) {
+>>>>>>> c745ef31b8fde88f52cf535644332b84bfe7636a
       const embed = new MessageEmbed().setTitle("**Misc**");
       let desc = "";
       client.commands.forEach((cmd) => {
@@ -40,6 +62,7 @@ module.exports = {
       });
       embed.setDescription(desc);
       msg.reply({ embeds: [embed] });
+<<<<<<< HEAD
     } else {
       //Math commands
       let ma = "";
@@ -74,6 +97,39 @@ module.exports = {
         )
         .setColor("#F7FFF7");
       msg.reply({ embeds: [embed] });
+=======
+    }else{
+      //Math commands
+      let ma = "";
+      client.commands.forEach((cmd) => {
+        if(cmd.category === "maths"){
+          ma += `\n${cmd.name}`
+        }
+      })
+      //Science commands
+      let sc = "";
+      client.commands.forEach((cmd) =>{
+        if(cmd.category === "science"){
+          sc += `\n${cmd.name}`
+        }
+      })
+      //Misc commands
+      let m = "";
+      client.commands.forEach((cmd) => {
+        if(cmd.category === "misc"){
+          m += `\n${cmd.name}`
+        }
+      })
+      const embed = new MessageEmbed()
+      .setTitle("Command List")
+      .addFields(
+        {name:"Maths", value:`\`\`\`${ma}\`\`\``, inline:true},
+        {name:"Science", value:`\`\`\`${sc}\`\`\``, inline:true},
+        {name:"Misc", value:`\`\`\`${m}\`\`\``, inline:true}
+      )
+      .setColor("#F7FFF7")
+      msg.reply({ embeds: [embed]});
+>>>>>>> c745ef31b8fde88f52cf535644332b84bfe7636a
     }
   },
 };

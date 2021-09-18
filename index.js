@@ -136,4 +136,4 @@ client.on("messageCreate", (msg) => {
   }
   // console.log(client.commands.Maths);
 });
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN2);
