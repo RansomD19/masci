@@ -130,6 +130,10 @@ client.on("messageCreate", (msg) => {
   }
 
   //
+
+  if (cmd === "horoscope") {
+    client.commands.get("horoscope").execute(msg, args);
+  }
   // console.log(client.commands.Maths);
 });
 client.login(process.env.TOKEN2);

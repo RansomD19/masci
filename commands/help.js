@@ -5,7 +5,6 @@ module.exports = {
   name2: "Help",
   usage: "m!help (category) || m!help ",
   execute(msg, args, client) {
-    
     if (
       args[0] === "maths" ||
       args[0] === "math" ||
@@ -19,13 +18,9 @@ module.exports = {
         }
       });
       embed.setDescription(desc);
-      embed.setColor("#F7FFF7")
+      embed.setColor("#F7FFF7");
       msg.reply({ embeds: [embed] });
-    }
-    else if (
-      args[0] === "sci" ||
-      args[0] === "science"
-    ) {
+    } else if (args[0] === "sci" || args[0] === "science") {
       const embed = new MessageEmbed().setTitle("**Science**");
       let desc = "";
       client.commands.forEach((cmd) => {
@@ -35,11 +30,7 @@ module.exports = {
       });
       embed.setDescription(desc);
       msg.reply({ embeds: [embed] });
-    }
-    else if (
-      args[0] === "misc" ||
-      args[0] === "miscellanious"
-    ) {
+    } else if (args[0] === "misc" || args[0] === "miscellanious") {
       const embed = new MessageEmbed().setTitle("**Misc**");
       let desc = "";
       client.commands.forEach((cmd) => {
@@ -53,33 +44,33 @@ module.exports = {
       //Math commands
       let ma = "";
       client.commands.forEach((cmd) => {
-        if(cmd.category === "maths"){
-          ma += `\n${cmd.name}`
+        if (cmd.category === "maths") {
+          ma += `\n${cmd.name}`;
         }
-      })
+      });
       //Science commands
       let sc = "";
-      client.commands.forEach((cmd) =>{
-        if(cmd.category === "science"){
-          sc += `\n${cmd.name}`
+      client.commands.forEach((cmd) => {
+        if (cmd.category === "science") {
+          sc += `\n${cmd.name}`;
         }
-      })
+      });
       //Misc commands
       let m = "";
       client.commands.forEach((cmd) => {
-        if(cmd.category === "misc"){
-          m += `\n${cmd.name}`
+        if (cmd.category === "misc") {
+          m += `\n${cmd.name}`;
         }
-      })
+      });
       const embed = new MessageEmbed()
-      .setTitle("Command List")
-      .addFields(
-        {name:"Maths", value:`\`\`\`${ma}\`\`\``, inline:true},
-        {name:"Science", value:`\`\`\`${sc}\`\`\``, inline:true},
-        {name:"Misc", value:`\`\`\`${m}\`\`\``, inline:true}
-      )
-      .setColor("#F7FFF7")
-      msg.reply({ embeds: [embed]});
+        .setTitle("Command List")
+        .addFields(
+          { name: "Maths", value: `\`\`\`${ma}\`\`\``, inline: true },
+          { name: "Science", value: `\`\`\`${sc}\`\`\``, inline: true },
+          { name: "Misc", value: `\`\`\`${m}\`\`\``, inline: true }
+        )
+        .setColor("#F7FFF7");
+      msg.reply({ embeds: [embed] });
     }
   },
 };
