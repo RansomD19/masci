@@ -49,7 +49,7 @@ module.exports = {
       });
       embed.setDescription(desc);
       msg.reply({ embeds: [embed] });
-    }else{
+    }else{  
       //Math commands
       let ma = "";
       client.commands.forEach((cmd) => {
