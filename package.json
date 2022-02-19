@@ -27,7 +27,7 @@
     "discord.js-pagination": "^1.0.3",
     "dotenv": "^10.0.0",
     "minecraft-server-util": "^3.6.0",
-    "node-fetch": "^2.6.2",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.12",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9"
